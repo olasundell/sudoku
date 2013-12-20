@@ -1,11 +1,10 @@
 package sudoku;
 
-import static org.junit.Assert.*;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertArrayEquals;
 
 
 public class SudokuTest {
@@ -101,12 +100,12 @@ public class SudokuTest {
 		};
 	}
 
-	@Before
+	@BeforeMethod
 	public void setup() {
 		solver=new Sudoku(board);
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testCandidates() {
 		ArrayList<ArrayList<Integer>> arr=new ArrayList<ArrayList<Integer>>();
 		ArrayList<ArrayList<Integer>> rows=new ArrayList<ArrayList<Integer>>();
@@ -150,7 +149,7 @@ public class SudokuTest {
 		}
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testColCandidates() {
 		for (int i=0;i<9;i++) {
 			ArrayList<Integer> results=solver.findColCandidates(i);
@@ -160,7 +159,7 @@ public class SudokuTest {
 		}
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testRowCandidates() {
 		for (int i=0;i<9;i++) {
 			ArrayList<Integer> results=solver.findRowCandidates(i);
@@ -170,7 +169,7 @@ public class SudokuTest {
 		}
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testBlockCandidates() {
 		for (int i=0;i<9;i++) {
 			ArrayList<Integer> results=solver.findBlockCandidates(i);
@@ -181,6 +180,7 @@ public class SudokuTest {
 	}
 
 //	@Test
+	@org.testng.annotations.Test
 	public void testSolve() {
 //		int[][] result=solver.trySolve();
 //		assertArrayEquals(solution,result);

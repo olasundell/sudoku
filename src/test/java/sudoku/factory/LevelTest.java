@@ -1,14 +1,10 @@
 package sudoku.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import sudoku.factory.SudokuFactory.State;
 
 import java.util.Random;
 
-import org.junit.Test;
-
-import sudoku.factory.SudokuFactory.State;
+import static org.junit.Assert.*;
 
 public class LevelTest {
 	/*
@@ -24,7 +20,7 @@ public class LevelTest {
 	 * 63 64 65|66 67 68|69 70 71
 	 * 72 73 74|75 76 77|78 79 80
 	 */
-	@Test
+	@org.testng.annotations.Test
 	public void testFindBlockPos() {
 		Level level = new Level(0);
 		
@@ -37,7 +33,7 @@ public class LevelTest {
 	}
 	
 	
-	@Test
+	@org.testng.annotations.Test
 	public void testSetValue() {
 		Level level = new Level(1);
 		assertEquals(81,level.freeSquares.size());
@@ -60,7 +56,7 @@ public class LevelTest {
 //		System.out.println(level);
 	}
 	
-	@Test
+	@org.testng.annotations.Test
 	public void testAllocateSquare() {
 		Random randomiser = new Random();
 		Level level = new Level(1);

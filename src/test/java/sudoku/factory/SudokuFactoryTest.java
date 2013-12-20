@@ -1,17 +1,13 @@
 package sudoku.factory;
 
-import static org.junit.Assert.*;
-
-
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
 import sudoku.Sudoku;
-import sudoku.factory.SudokuFactory;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class SudokuFactoryTest {
 
-	@Test
+	@org.testng.annotations.Test
 	public void testCreateSudoku() throws SudokuCreationException {
 		SudokuFactory factory;
 		

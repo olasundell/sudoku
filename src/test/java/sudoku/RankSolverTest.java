@@ -1,19 +1,18 @@
 package sudoku;
 
-import static org.junit.Assert.*;
+import org.testng.annotations.BeforeMethod;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class RankSolverTest {
 	RankSolver solver;
 	
-	@Before
+	@BeforeMethod
 	public void setUp() throws Exception {
 		solver=new RankSolver();
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testBlockIterate() {
 		Sudoku sudoku = new Sudoku(SudokuTest.veryHardBoard);
 		sudoku.calculateCandidates();
@@ -23,7 +22,7 @@ public class RankSolverTest {
 		assertEquals(0,solver.blockIterate(sudoku, 5, 3));
 	}
 
-	@Test
+	@org.testng.annotations.Test
 	public void testRowIterate() {
 		Sudoku sudoku = new Sudoku(SudokuTest.veryHardBoard);
 		sudoku.calculateCandidates();
@@ -33,7 +32,7 @@ public class RankSolverTest {
 		assertEquals(0,solver.rowIterate(sudoku, 7, 5));
 	}
 
-	//@Test
+	@org.testng.annotations.Test(enabled = false)
 	public void testColIterate() {
 		Sudoku sudoku = new Sudoku(SudokuTest.veryHardBoard);
 		assertEquals(9,solver.colIterate(sudoku, 0, 3));
