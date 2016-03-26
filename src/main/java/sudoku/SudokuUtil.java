@@ -1,5 +1,7 @@
 package sudoku;
 
+import sudoku.model.Cell;
+
 import java.util.ArrayList;
 
 public class SudokuUtil {

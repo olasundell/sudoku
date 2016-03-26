@@ -1,13 +1,18 @@
 package sudoku;
 
+import sudoku.model.Cell;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sudoku {
-	Cell[][] board;
-	ArrayList<ArrayList<Integer>> candidates;
+	public final Cell[][] board;
+	public final List<List<Integer>> candidates;
+
 	public Sudoku() {
-		board=new Cell[9][9];
-		candidates=new ArrayList<ArrayList<Integer>>();
+		board = new Cell[9][9];
+		candidates = new ArrayList<>();
+
 		for (int i=0;i<9*9;i++) {
 			candidates.add(new ArrayList<Integer>());
 		}
@@ -62,11 +67,12 @@ public class Sudoku {
 		}
 	}
 
-	private ArrayList<ArrayList<Integer>> findCandidates() {
-		ArrayList<ArrayList<Integer>> candidates=new ArrayList<ArrayList<Integer>>();
+	private List<List<Integer>> findCandidates() {
+		List<List<Integer>> candidates=new ArrayList<>();
+
 		for (int i=0;i<9;i++) {
 			for (int j=0;j<9;j++) {
-				candidates.add(board[i][j].candidates);
+				candidates.add(board[i][j].getCandidates());
 			}
 		}
 		return candidates;
@@ -151,6 +157,10 @@ public class Sudoku {
 			}
 		}
 		return result;
+	}
+
+	public Cell getCellAt(int x, int y) {
+		return board[x][y];
 	}
 
 	public Cell getCell(int i) {

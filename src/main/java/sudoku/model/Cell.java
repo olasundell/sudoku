@@ -1,21 +1,16 @@
-package sudoku;
+package sudoku.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: Feb 1, 2010
- * Time: 1:02:04 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Cell {
 	private int value;
-	ArrayList<Integer> candidates;
+	public final List<Integer> candidates;
 
 	public Cell(int i) {
 		value = i;
-		candidates = new ArrayList<Integer>();
+		candidates = new ArrayList<>();
 	}
 
 	public boolean isUndecided() {
@@ -57,8 +52,12 @@ public class Cell {
 		return candidates.size()==1;
 	}
 
-	public Integer[] getCandidates() {
+	public Integer[] getCandidatesAsArray() {
 		return candidates.toArray(new Integer[candidates.size()]);
+	}
+
+	public List<Integer> getCandidates() {
+		return Collections.unmodifiableList(candidates);
 	}
 
 	public void setValue(int value) {

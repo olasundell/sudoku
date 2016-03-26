@@ -1,7 +1,11 @@
-package sudoku;
+package sudoku.gui;
+
+import sudoku.Sudoku;
+import sudoku.model.Cell;
+import sudoku.solver.RankSolver;
+import sudoku.solver.SimpleSolver;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +104,7 @@ public class SudokuForm extends JFrame implements ActionListener {
 		boolean showCandidates=true;
 		for (int i=0;i<labels.length;i++) {
 			currentCell=sudoku.getCell(i);
-			if ((currentCell.isUndecided() && showCandidates) || !currentCell.isUndecided()) {
+			if (!currentCell.isUndecided() || showCandidates) {
 				String newStr=currentCell.toString();
 				if (!labels[i].getText().equals(newStr) ) {
 					if (!labels[i].getText().isEmpty()) {

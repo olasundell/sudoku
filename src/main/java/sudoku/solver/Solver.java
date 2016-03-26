@@ -1,4 +1,6 @@
-package sudoku;
+package sudoku.solver;
+
+import sudoku.Sudoku;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,4 +1,7 @@
-package sudoku;
+package sudoku.solver;
+
+import sudoku.Sudoku;
+import sudoku.solver.Solver;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +15,7 @@ public class SimpleSolver extends Solver {
 		for (int i=0;i<sudoku.board.length;i++) {
 			for (int j=0;j<sudoku.board[i].length;j++) {
 				if (sudoku.board[i][j].hasSingleCandidate()) {
-					setSolution(sudoku.board[i][j].getCandidates()[0], sudoku, j, i);
+					setSolution(sudoku.board[i][j].getCandidatesAsArray()[0], sudoku, j, i);
 					return true;
 				}
 			}
