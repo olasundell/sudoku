@@ -42,9 +42,9 @@ public class Sudoku {
 	}
 
 	public void calculateCandidates() {
-		ArrayList<ArrayList<Integer>> rowCandidates=new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Integer>> colCandidates=new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Integer>> blockCandidates=new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> rowCandidates= new ArrayList<>();
+		ArrayList<ArrayList<Integer>> colCandidates= new ArrayList<>();
+		ArrayList<ArrayList<Integer>> blockCandidates= new ArrayList<>();
 		for (int i=0;i<9;i++) {
 			rowCandidates.add(findRowCandidates(i));
 			colCandidates.add(findColCandidates(i));
@@ -82,7 +82,7 @@ public class Sudoku {
 	}
 
 	protected ArrayList<Integer> findBlockCandidates(int block) {
-		ArrayList<Integer> arr=new ArrayList<Integer>();
+		ArrayList<Integer> arr= new ArrayList<>();
 
 		for (int i=1;i<=9;i++) {
 			arr.add(i);
@@ -103,7 +103,7 @@ public class Sudoku {
 	}
 
 	protected ArrayList<Integer> findColCandidates(int col) {
-		ArrayList<Integer> arr=new ArrayList<Integer>();
+		ArrayList<Integer> arr= new ArrayList<>();
 
 		for (int i=1;i<=9;i++) {
 			arr.add(i);
@@ -119,7 +119,7 @@ public class Sudoku {
 	}
 
 	protected ArrayList<Integer> findRowCandidates(int row) {
-		ArrayList<Integer> arr=new ArrayList<Integer>();
+		ArrayList<Integer> arr= new ArrayList<>();
 
 		for (int i=1;i<=9;i++) {
 			arr.add(i);
@@ -135,7 +135,7 @@ public class Sudoku {
 	}
 
 	public String toString() {
-		StringBuffer s=new StringBuffer();
+		StringBuilder s=new StringBuilder();
 
 		for (int i=0;i<9;i++) {
 			for (int j=0;j<8;j++) {

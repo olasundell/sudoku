@@ -23,7 +23,7 @@ public class Cell {
 
 	public String toString() {
 		if (value==0) {
-			StringBuffer r=new StringBuffer("{");
+			StringBuilder r=new StringBuilder("{");
 			for (int i=0;i< candidates.size()-1;i++) {
 				r.append(candidates.get(i));
 				r.append(",");

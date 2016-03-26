@@ -8,10 +8,10 @@ import sudoku.model.Sudoku;
 
 public class SudokuFactory {
 	private static final int MAX_COMPLETE_BACKSTEPS = 100;
-	private Random randomiser;
-	private static SudokuFactory staticFactory = new SudokuFactory(0);
-	private Level[] levels;
-	Logger logger = Logger.getLogger(this.getClass());
+	private final Random randomiser;
+	private static final SudokuFactory staticFactory = new SudokuFactory(0);
+	private final Level[] levels;
+	final Logger logger = Logger.getLogger(this.getClass());
 	
 	public SudokuFactory(long randseed) {
 		randomiser = new Random();
@@ -94,10 +94,8 @@ public class SudokuFactory {
 				logger.debug("Backstepping. i: "+i+", backStep:"+backStep+", lastFailed:"+lastFailedLevel);
 			}
 		}
-		
-		Sudoku sudoku = new Sudoku(createIntArr());
-		
-		return sudoku;
+
+		return new Sudoku(createIntArr());
 	}
 
 //	public Sudoku 

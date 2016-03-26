@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import sudoku.model.Sudoku;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -21,7 +22,7 @@ public class SudokuTest {
 			{3,4,5,2,8,6,1,7,9}
 	};
 
-	public static int[][] board = {
+	public static final int[][] board = {
 			{5,3,0,0,7,0,0,0,0},
 			{6,0,0,1,9,5,0,0,0},
 			{0,9,8,0,0,0,0,6,0},
@@ -33,7 +34,7 @@ public class SudokuTest {
 			{0,0,0,0,8,0,0,7,9}
 	};
 
-	public static int[][] veryHardBoard = {
+	public static final int[][] veryHardBoard = {
 			{0,0,1,0,0,4,0,5,0},
 			{0,0,9,0,0,1,3,0,0},
 			{0,7,0,5,0,8,0,4,0},
@@ -108,34 +109,28 @@ public class SudokuTest {
 
 	@org.testng.annotations.Test
 	public void testCandidates() {
-		ArrayList<ArrayList<Integer>> arr=new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Integer>> rows=new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Integer>> cols=new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Integer>> blocks=new ArrayList<ArrayList<Integer>>();
+		ArrayList<ArrayList<Integer>> arr= new ArrayList<>();
+		ArrayList<ArrayList<Integer>> rows= new ArrayList<>();
+		ArrayList<ArrayList<Integer>> cols= new ArrayList<>();
+		ArrayList<ArrayList<Integer>> blocks= new ArrayList<>();
 
 		for (int i=0;i<9;i++) {
-			ArrayList<Integer> r=new ArrayList<Integer>();
-			for (Integer j:rowCandidates[i]) {
-				r.add(j);
-			}
+			ArrayList<Integer> r= new ArrayList<>();
+			Collections.addAll(r, rowCandidates[i]);
 			rows.add(r);
 
-			ArrayList<Integer> c=new ArrayList<Integer>();
-			for (Integer j:colCandidates[i]) {
-				c.add(j);
-			}
+			ArrayList<Integer> c= new ArrayList<>();
+			Collections.addAll(c, colCandidates[i]);
 			cols.add(c);
 
-			ArrayList<Integer> b=new ArrayList<Integer>();
-			for (Integer j:colCandidates[i]) {
-				b.add(j);
-			}
+			ArrayList<Integer> b= new ArrayList<>();
+			Collections.addAll(b, colCandidates[i]);
 			blocks.add(b);
 		}
 
 		for (int i=0;i<9;i++) {
 			for (int j=0;j<9;j++) {
-				ArrayList<Integer> a=new ArrayList<Integer>();
+				ArrayList<Integer> a= new ArrayList<>();
 				arr.add(a);
 				if (board[i][j]==0) {
 					for (int k=1;k<=9;k++) {

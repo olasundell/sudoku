@@ -24,7 +24,7 @@ public class SudokuUtil {
 	}
 	
 	public static ArrayList<Integer> getBlockCandidates(Sudoku sudoku, int i, int j) {
-		ArrayList<Integer> blockCandidates=new ArrayList<Integer>();
+		ArrayList<Integer> blockCandidates= new ArrayList<>();
 
 		for (int k=0;k<9;k++) {
 			int x,y;
@@ -41,7 +41,7 @@ public class SudokuUtil {
 	}
 
 	public static ArrayList<Integer> getColCandidates(Sudoku sudoku, int i, int j) {
-		ArrayList<Integer> colCandidates=new ArrayList<Integer>();
+		ArrayList<Integer> colCandidates= new ArrayList<>();
 
 		for (int k=0;k<9;k++) {
 			if (k!=i) { // check col
@@ -53,7 +53,7 @@ public class SudokuUtil {
 	}
 	
 	public static ArrayList<Integer> getRowCandidates(Sudoku sudoku, int i, int j) {
-		ArrayList<Integer> rowCandidates=new ArrayList<Integer>();
+		ArrayList<Integer> rowCandidates= new ArrayList<>();
 
 		for (int k=0;k<9;k++) {
 			if (k!=j) { // check row

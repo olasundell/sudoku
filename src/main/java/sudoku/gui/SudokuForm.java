@@ -24,9 +24,9 @@ public class SudokuForm extends JFrame implements ActionListener {
 	private JPanel bottomPanel;
 	private JPanel boardPanel;
 	private GridLayout layout;
-	private Sudoku sudoku;
-	private RankSolver rankSolver;
-	private SimpleSolver simpleSolver;
+	private final Sudoku sudoku;
+	private final RankSolver rankSolver;
+	private final SimpleSolver simpleSolver;
 	private JButton quit;
 	private JButton iterate;
 

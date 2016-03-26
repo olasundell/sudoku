@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import sudoku.factory.SudokuFactory.State;
 
 public class Level {
-	protected int value;
-	protected State[] squares;
-	protected ArrayList<Integer> freeSquares;
-	protected ArrayList<Integer> takenSquares;
+	protected final int value;
+	protected final State[] squares;
+	protected final ArrayList<Integer> freeSquares;
+	protected final ArrayList<Integer> takenSquares;
 	
 	public Level(int value) {
 		this.value = value;
 		squares = new State[81];
-		freeSquares = new ArrayList<Integer>();
-		takenSquares = new ArrayList<Integer>();
+		freeSquares = new ArrayList<>();
+		takenSquares = new ArrayList<>();
 		
 		this.clear();
 	}
@@ -81,10 +81,10 @@ public class Level {
 	}
 
 	public String toString() {
-		StringBuffer buf = new StringBuffer();
+		StringBuilder buf = new StringBuilder();
 		for (int i=0;i<9;i++) {
 			for (int j=0;j<9;j++) {
-				buf.append(squares[i*9 + j]+",");
+				buf.append(squares[i * 9 + j]).append(",");
 			}
 			buf.append('\n');
 		}

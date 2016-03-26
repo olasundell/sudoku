@@ -11,7 +11,7 @@ public class SudokuFactoryTest {
 	public void testCreateSudoku() throws SudokuCreationException {
 		SudokuFactory factory;
 		
-		Sudoku sudoku = null;
+		Sudoku sudoku;
 		int i=0;
 		
 		try {

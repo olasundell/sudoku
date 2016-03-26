@@ -1,7 +1,7 @@
 package sudoku.factory;
 
 public class LevelFactory {
-	protected static LevelFactory defaultFactory = new LevelFactory();
+	protected static final LevelFactory defaultFactory = new LevelFactory();
 	
 	public LevelFactory getDefaultFactory() {
 		return defaultFactory;
