@@ -10,11 +10,31 @@ import sudoku.model.Sudoku;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Solver {
+	protected CandidateCalculator candidateCalculator = new CandidateCalculator();
+
+	public void calculateCandidates(Sudoku sudoku) {
+		candidateCalculator.calculateCandidates(sudoku);
+	}
+
 	public abstract boolean iterate(Sudoku sudoku);
 	
 	public void setSolution(int solution, Sudoku sudoku, int x, int y) {
 		sudoku.board[y][x].setValue(solution);
 		sudoku.board[y][x].removeCandidate(solution);
-		sudoku.calculateCandidates();
+		candidateCalculator.calculateCandidates(sudoku);
 	}
+
+//	public int[][] trySolve(Sudoku sudoku) {
+//		candidateCalculator.findCandidates(sudoku);
+//		for (int i=0;i<9;i++) {
+//			for (int j=0;j<9;j++) {
+//				if (board[i][j].isUndecided()) {
+//					calculateValueForSquare(i,j);
+//				}
+//			}
+//
+//		}
+//		return getBoardAsInts();
+//	}
+
 }

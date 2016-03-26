@@ -14,7 +14,7 @@ public class Sudoku {
 		candidates = new ArrayList<>();
 
 		for (int i=0;i<9*9;i++) {
-			candidates.add(new ArrayList<Integer>());
+			candidates.add(new ArrayList<>());
 		}
 	}
 
@@ -26,112 +26,6 @@ public class Sudoku {
 				this.board[i][j]=new Cell(board[i][j]);
 			}
 		}
-	}
-
-	public int[][] trySolve() {
-		findCandidates();
-		for (int i=0;i<9;i++) {
-			for (int j=0;j<9;j++) {
-				if (board[i][j].isUndecided()) {
-					calculateValueForSquare(i,j);
-				}
-			}
-
-		}
-		return getBoardAsInts();
-	}
-
-	public void calculateCandidates() {
-		ArrayList<ArrayList<Integer>> rowCandidates= new ArrayList<>();
-		ArrayList<ArrayList<Integer>> colCandidates= new ArrayList<>();
-		ArrayList<ArrayList<Integer>> blockCandidates= new ArrayList<>();
-		for (int i=0;i<9;i++) {
-			rowCandidates.add(findRowCandidates(i));
-			colCandidates.add(findColCandidates(i));
-			blockCandidates.add(findBlockCandidates(i));
-		}
-
-		for (int i=0;i<9;i++) {
-			for (int j=0;j<9;j++) {
-				if (board[i][j].getValue()==0) {
-					board[i][j].clearCandidates();
-					for (int k=1;k<=9;k++) {
-						if (rowCandidates.get(i).contains(k) &&
-								colCandidates.get(j).contains(k) &&
-								blockCandidates.get((i/3)*3 + (j/3)).contains(k)) {
-							board[i][j].addCandidate(k);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	private List<List<Integer>> findCandidates() {
-		List<List<Integer>> candidates=new ArrayList<>();
-
-		for (int i=0;i<9;i++) {
-			for (int j=0;j<9;j++) {
-				candidates.add(board[i][j].getCandidates());
-			}
-		}
-		return candidates;
-	}
-
-	private void calculateValueForSquare(int i, int j) {
-	}
-
-	protected ArrayList<Integer> findBlockCandidates(int block) {
-		ArrayList<Integer> arr= new ArrayList<>();
-
-		for (int i=1;i<=9;i++) {
-			arr.add(i);
-		}
-
-		int row;
-		int col;
-
-		for (int i=0;i<9;i++) {
-			row=(block / 3)*3 + i / 3;
-			col=(block % 3)*3 + i % 3;
-			if (board[row][col].getValue()>0) {
-				arr.remove(Integer.valueOf(board[row][col].getValue()));
-			}
-		}
-
-		return arr;
-	}
-
-	protected ArrayList<Integer> findColCandidates(int col) {
-		ArrayList<Integer> arr= new ArrayList<>();
-
-		for (int i=1;i<=9;i++) {
-			arr.add(i);
-		}
-
-		for (int i=0;i<9;i++) {
-			if (board[i][col].getValue()>0) {
-				arr.remove(Integer.valueOf(board[i][col].getValue()));
-			}
-		}
-
-		return arr;
-	}
-
-	protected ArrayList<Integer> findRowCandidates(int row) {
-		ArrayList<Integer> arr= new ArrayList<>();
-
-		for (int i=1;i<=9;i++) {
-			arr.add(i);
-		}
-
-		for (int i=0;i<9;i++) {
-			if (board[row][i].getValue()>0) {
-				arr.remove(Integer.valueOf(board[row][i].getValue()));
-			}
-		}
-
-		return arr;
 	}
 
 	public String toString() {

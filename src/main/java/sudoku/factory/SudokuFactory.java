@@ -2,8 +2,8 @@ package sudoku.factory;
 
 import java.util.Random;
 
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sudoku.model.Sudoku;
 
 public class SudokuFactory {
@@ -11,13 +11,13 @@ public class SudokuFactory {
 	private final Random randomiser;
 	private static final SudokuFactory staticFactory = new SudokuFactory(0);
 	private final Level[] levels;
-	final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public SudokuFactory(long randseed) {
 		randomiser = new Random();
 		setSeed(randseed);
 		levels = new Level[9];
-		for (int i=0;i<9;i++) {
+		for (int i = 0 ; i < 9 ; i++) {
 			levels[i] = new Level(i+1);
 		}
 	}
@@ -27,21 +27,18 @@ public class SudokuFactory {
 	}
 	
 	public enum State {
-		FREE {
-			public String toString() {
-				return "F";
-			}
-		},
-		
-		TAKEN {
-			public String toString() {
-				return "T";
-			}
-		},
-		ILLEGAL {
-			public String toString() {
-				return "X";
-			}
+		FREE("F"),
+		TAKEN("T"),
+		ILLEGAL("X");
+
+		String shortHand;
+
+		State(String shortHand) {
+			this.shortHand = shortHand;
+		}
+
+		public String toString() {
+			return shortHand;
 		}
 	}
 	
@@ -77,11 +74,11 @@ public class SudokuFactory {
 					lastFailedLevel = i;
 				}
 				
-				for (int j=i;j<i+backStep;j++) {
+				for (int j = i ; j < i + backStep ; j++) {
 					levels[j].clear();
 				}
 				
-				i-=backStep;
+				i -= backStep;
 				
 				if (i < 0) {
 					if (noOfTimesFailed > MAX_COMPLETE_BACKSTEPS) {
@@ -98,8 +95,6 @@ public class SudokuFactory {
 		return new Sudoku(createIntArr());
 	}
 
-//	public Sudoku 
-	
 	protected int[][] createIntArr() {
 		int[][] board = new int[9][9];
 		int x, y;

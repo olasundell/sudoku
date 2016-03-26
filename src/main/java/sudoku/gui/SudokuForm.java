@@ -40,7 +40,6 @@ public class SudokuForm extends JFrame implements ActionListener {
 		setupFonts();
 		
 		this.sudoku=sudoku;
-		sudoku.calculateCandidates();
 		System.out.println(sudoku.toString());
 
 		this.addComponentListener(new ResizeListener(this));
