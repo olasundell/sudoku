@@ -1,6 +1,7 @@
-package sudoku;
+package sudoku.model;
 
 import org.testng.annotations.BeforeMethod;
+import sudoku.model.Sudoku;
 
 import java.util.ArrayList;
 

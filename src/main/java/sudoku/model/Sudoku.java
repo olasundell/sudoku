@@ -1,4 +1,4 @@
-package sudoku;
+package sudoku.model;
 
 import sudoku.model.Cell;
 

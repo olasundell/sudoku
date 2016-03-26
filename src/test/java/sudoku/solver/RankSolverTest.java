@@ -1,9 +1,8 @@
 package sudoku.solver;
 
 import org.testng.annotations.BeforeMethod;
-import sudoku.Sudoku;
-import sudoku.SudokuTest;
-import sudoku.solver.RankSolver;
+import sudoku.model.Sudoku;
+import sudoku.model.SudokuTest;
 
 import static org.junit.Assert.assertEquals;
 

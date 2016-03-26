@@ -1,6 +1,6 @@
 package sudoku.gui;
 
-import sudoku.Sudoku;
+import sudoku.model.Sudoku;
 import sudoku.model.Cell;
 import sudoku.solver.RankSolver;
 import sudoku.solver.SimpleSolver;

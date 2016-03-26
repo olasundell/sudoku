@@ -1,7 +1,6 @@
 package sudoku.solver;
 
-import sudoku.Sudoku;
-import sudoku.solver.Solver;
+import sudoku.model.Sudoku;
 
 /**
  * Created by IntelliJ IDEA.

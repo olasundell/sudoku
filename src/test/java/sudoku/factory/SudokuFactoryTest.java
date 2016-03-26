@@ -1,6 +1,6 @@
 package sudoku.factory;
 
-import sudoku.Sudoku;
+import sudoku.model.Sudoku;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

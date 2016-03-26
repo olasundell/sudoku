@@ -1,5 +1,6 @@
-package sudoku;
+package sudoku.util;
 
+import sudoku.model.Sudoku;
 import sudoku.model.Cell;
 
 import java.util.ArrayList;

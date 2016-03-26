@@ -4,7 +4,7 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 
-import sudoku.Sudoku;
+import sudoku.model.Sudoku;
 
 public class SudokuFactory {
 	private static final int MAX_COMPLETE_BACKSTEPS = 100;

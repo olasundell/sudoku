@@ -1,9 +1,8 @@
 package sudoku.solver;
 
-import sudoku.Sudoku;
-import sudoku.SudokuUtil;
+import sudoku.model.Sudoku;
+import sudoku.util.SudokuUtil;
 import sudoku.model.Cell;
-import sudoku.solver.Solver;
 
 import java.util.ArrayList;
 
