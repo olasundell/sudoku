@@ -1,7 +1,7 @@
 package sudoku.model;
 
 import org.testng.annotations.BeforeMethod;
-import sudoku.model.Sudoku;
+import sudoku.util.SudokuUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,53 +10,6 @@ import static org.junit.Assert.assertArrayEquals;
 
 
 public class SudokuTest {
-	int[][] solution = {
-			{5,3,4,6,7,8,9,1,2},
-			{6,7,2,1,9,5,3,4,8},
-			{1,9,8,3,4,2,5,6,7},
-			{8,5,9,7,6,1,4,2,3},
-			{4,2,6,8,5,3,7,9,1},
-			{7,1,3,9,2,4,8,5,6},
-			{9,6,1,5,3,7,2,8,4},
-			{2,8,7,4,1,9,6,3,5},
-			{3,4,5,2,8,6,1,7,9}
-	};
-
-	public static final int[][] board = {
-			{5,3,0,0,7,0,0,0,0},
-			{6,0,0,1,9,5,0,0,0},
-			{0,9,8,0,0,0,0,6,0},
-			{8,0,0,0,6,0,0,0,3},
-			{4,0,0,8,0,3,0,0,1},
-			{7,0,0,0,2,0,0,0,6},
-			{0,6,0,0,0,0,2,8,0},
-			{0,0,0,4,1,9,0,0,5},
-			{0,0,0,0,8,0,0,7,9}
-	};
-
-	public static final int[][] veryHardBoard = {
-			{0,0,1,0,0,4,0,5,0},
-			{0,0,9,0,0,1,3,0,0},
-			{0,7,0,5,0,8,0,4,0},
-			{0,0,0,0,0,0,1,0,9},
-			{0,0,0,8,0,9,0,0,0},
-			{2,0,8,0,0,0,0,0,0},
-			{0,4,0,1,0,2,0,9,0},
-			{0,0,5,4,0,0,7,0,0},
-			{0,3,0,7,0,0,5,0,0}
-	};
-	
-	public static int[][] veryHardBoardSolution = {
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{}
-	};
 
 	Sudoku solver;
 
@@ -104,7 +57,7 @@ public class SudokuTest {
 
 	@BeforeMethod
 	public void setup() {
-		solver=new Sudoku(board);
+		solver=new Sudoku(SudokuUtil.BOARD);
 	}
 
 	@org.testng.annotations.Test
@@ -132,7 +85,7 @@ public class SudokuTest {
 			for (int j=0;j<9;j++) {
 				ArrayList<Integer> a= new ArrayList<>();
 				arr.add(a);
-				if (board[i][j]==0) {
+				if (SudokuUtil.BOARD[i][j]==0) {
 					for (int k=1;k<=9;k++) {
 						if (rows.get(i).contains(k) &&
 								cols.get(j).contains(k) &&
@@ -179,6 +132,6 @@ public class SudokuTest {
 	@org.testng.annotations.Test
 	public void testSolve() {
 //		int[][] result=solver.trySolve();
-//		assertArrayEquals(solution,result);
+//		assertArrayEquals(SOLUTION,result);
 	}
 }

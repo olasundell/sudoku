@@ -31,15 +31,15 @@ public class SudokuFactoryTest {
 //		Sudoku sudoku = new Sudoku(new int[9][9]);
 //		
 //		assertTrue(SudokuFactory.getInstance().isCorrect(sudoku));
-//		sudoku.board[0][0].setValue(1); 
+//		sudoku.BOARD[0][0].setValue(1);
 //		assertTrue(SudokuFactory.getInstance().isCorrect(sudoku));
-//		sudoku.board[0][1].setValue(1); 
+//		sudoku.BOARD[0][1].setValue(1);
 //		assertFalse(SudokuFactory.getInstance().isCorrect(sudoku));
-//		sudoku.board[0][1].setValue(2); 
+//		sudoku.BOARD[0][1].setValue(2);
 //		assertTrue(SudokuFactory.getInstance().isCorrect(sudoku));
-//		sudoku.board[1][0].setValue(2); 
+//		sudoku.BOARD[1][0].setValue(2);
 //		assertFalse(SudokuFactory.getInstance().isCorrect(sudoku));
-//		sudoku.board[1][0].setValue(3); 
+//		sudoku.BOARD[1][0].setValue(3);
 //		assertTrue(SudokuFactory.getInstance().isCorrect(sudoku));
 //	}
 }
