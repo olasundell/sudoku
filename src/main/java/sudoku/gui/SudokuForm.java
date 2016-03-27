@@ -40,6 +40,9 @@ public class SudokuForm extends JFrame implements ActionListener {
 		setupFonts();
 		
 		this.sudoku=sudoku;
+
+		simpleSolver.calculateCandidates(sudoku);
+
 		System.out.println(sudoku.toString());
 
 		this.addComponentListener(new ResizeListener(this));
@@ -159,7 +162,7 @@ public class SudokuForm extends JFrame implements ActionListener {
 		public void componentResized(ComponentEvent e) {
 			Component c = e.getComponent();
 
-			logger.info(c.getSize().toString());
+			logger.trace(c.getSize().toString());
 			double least = Math.min(c.getSize().getHeight(), c.getSize().getWidth());
 
 			Font f = standardFont.deriveFont(standardFont.getSize() * (float) (least / ((float) WIDTH)));
