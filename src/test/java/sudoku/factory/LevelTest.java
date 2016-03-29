@@ -1,10 +1,10 @@
 package sudoku.factory;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import sudoku.factory.SudokuFactory.State;
 
 import java.util.Random;
-
-import static org.junit.Assert.*;
 
 public class LevelTest {
 	/*
@@ -24,39 +24,39 @@ public class LevelTest {
 	public void testFindBlockPos() {
 		Level level = new Level(0);
 		
-		assertEquals(1,level.findBlockPos(0, 1));
-		assertEquals(0,level.findBlockPos(10, 0));
-		assertEquals(27,level.findBlockPos(29, 0));
-		assertEquals(37,level.findBlockPos(29, 4));
-		assertEquals(75,level.findBlockPos(76, 6));
-		assertEquals(15,level.findBlockPos(26, 3));
+		Assert.assertEquals(1,level.findBlockPos(0, 1));
+		Assert.assertEquals(0,level.findBlockPos(10, 0));
+		Assert.assertEquals(27,level.findBlockPos(29, 0));
+		Assert.assertEquals(37,level.findBlockPos(29, 4));
+		Assert.assertEquals(75,level.findBlockPos(76, 6));
+		Assert.assertEquals(15,level.findBlockPos(26, 3));
 	}
 	
 	
 	@org.testng.annotations.Test
 	public void testSetValue() {
 		Level level = new Level(1);
-		assertEquals(81,level.freeSquares.size());
+		Assert.assertEquals(81,level.freeSquares.size());
 		level.setValue(0, State.TAKEN);
 		
 		// row
-		assertFalse(level.setValue(0, State.TAKEN));
-		assertFalse(level.setValue(1, State.TAKEN));
-		assertFalse(level.setValue(2, State.TAKEN));
+		Assert.assertFalse(level.setValue(0, State.TAKEN));
+		Assert.assertFalse(level.setValue(1, State.TAKEN));
+		Assert.assertFalse(level.setValue(2, State.TAKEN));
 		
 		// col
-		assertFalse(level.setValue(9, State.TAKEN));
-		assertFalse(level.setValue(18, State.TAKEN));
+		Assert.assertFalse(level.setValue(9, State.TAKEN));
+		Assert.assertFalse(level.setValue(18, State.TAKEN));
 
 		// block
-		assertFalse(level.setValue(10, State.TAKEN));
+		Assert.assertFalse(level.setValue(10, State.TAKEN));
 		
-		assertTrue(level.setValue(40, State.TAKEN));
-		assertFalse(level.setValue(50, State.TAKEN));
+		Assert.assertTrue(level.setValue(40, State.TAKEN));
+		Assert.assertFalse(level.setValue(50, State.TAKEN));
 //		System.out.println(level);
 	}
 	
-	@org.testng.annotations.Test
+	@Test
 	public void testAllocateSquare() {
 		Random randomiser = new Random();
 		Level level = new Level(1);
@@ -68,14 +68,14 @@ public class LevelTest {
 			for (int j=0;j<9;j++) {
 				level.allocateFreeSquare(randomiser.nextInt(level.noOfFreeSquares()));
 			}
-			assertEquals(0, level.noOfFreeSquares());
+			Assert.assertEquals(0, level.noOfFreeSquares());
 		}
 		Level level2 = new Level(2);
 		for (Integer i: level.takenSquares) {
 			level2.setValue(i, State.ILLEGAL);
 		}
 		
-		assertEquals(81-9, level2.noOfFreeSquares());
+		Assert.assertEquals(81-9, level2.noOfFreeSquares());
 		
 		int tries = 10;
 		
@@ -84,11 +84,11 @@ public class LevelTest {
 				j--;
 				tries--;
 				if (tries == 0) { // don't loop forever
-					assertTrue("We ran out of tries to allocate a free square",false);
+					Assert.assertTrue(false, "We ran out of tries to allocate a free square");
 					break;
 				}
 			}
 		}
-		assertEquals(0, level2.noOfFreeSquares());
+		Assert.assertEquals(0, level2.noOfFreeSquares());
 	}
 }

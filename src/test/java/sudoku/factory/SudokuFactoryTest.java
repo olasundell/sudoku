@@ -1,9 +1,7 @@
 package sudoku.factory;
 
+import org.testng.Assert;
 import sudoku.model.Sudoku;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 
 public class SudokuFactoryTest {
 
@@ -18,11 +16,11 @@ public class SudokuFactoryTest {
 			for (i=0;i<100;i++) {
 				factory = new SudokuFactory(i);
 				sudoku = factory.createSudoku();
-				assertNotNull(Integer.toString(i),sudoku);
+				Assert.assertNotNull(sudoku, Integer.toString(i));
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			e.printStackTrace();
-			assertFalse("ArrayIndexOutOfBoundsException occurred with seed "+i,true);
+			Assert.assertFalse( true, "ArrayIndexOutOfBoundsException occurred with seed "+i );
 		}
 	}
 //

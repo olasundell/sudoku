@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * TODO write documentation
  */
-public class CandidateCalculator {
-	public void calculateCandidates(Sudoku sudoku) {
+class CandidateCalculator {
+	void calculateCandidates(Sudoku sudoku) {
 		List<List<Integer>> rowCandidates= new ArrayList<>();
 		List<List<Integer>> colCandidates= new ArrayList<>();
 		List<List<Integer>> blockCandidates= new ArrayList<>();

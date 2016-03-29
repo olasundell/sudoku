@@ -1,6 +1,5 @@
 package sudoku.solver;
 
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

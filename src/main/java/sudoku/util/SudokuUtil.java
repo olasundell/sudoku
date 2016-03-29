@@ -2,10 +2,14 @@ package sudoku.util;
 
 import sudoku.model.Sudoku;
 import sudoku.model.Cell;
+import sudoku.solver.SolverChain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SudokuUtil {
+	private final static SolverChain solverChain = new SolverChain();
+
 	public static final int[][] SOLUTION = {
 			{5,3,4,6,7,8,9,1,2},
 			{6,7,2,1,9,5,3,4,8},
@@ -68,16 +72,16 @@ public class SudokuUtil {
 		return block;
 	}
 	
-	public static ArrayList<Integer> getBlockCandidates(Sudoku sudoku, int i, int j) {
-		ArrayList<Integer> blockCandidates= new ArrayList<>();
+	public static List<Integer> getBlockCandidates(Sudoku sudoku, int i, int j) {
+		List<Integer> blockCandidates= new ArrayList<>();
 
-		for (int k=0;k<9;k++) {
-			int x,y;
+		for (int  k = 0 ; k < 9 ; k++) {
+			int x, y;
 
 			y = i - i % 3 + k % 3;
 			x = j - j % 3 + k / 3;
 
-			if ((x!=j || y!=i) && sudoku.board[y][x].isUndecided()) {
+			if ((x != j || y != i) && sudoku.board[y][x].isUndecided()) {
 				blockCandidates.addAll(sudoku.board[y][x].candidates);
 			}
 		}
@@ -109,4 +113,7 @@ public class SudokuUtil {
 		return rowCandidates;
 	}
 
+	public static SolverChain solverChain() {
+		return solverChain;
+	}
 }

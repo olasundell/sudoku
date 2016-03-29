@@ -5,21 +5,14 @@ import sudoku.util.SudokuUtil;
 import sudoku.model.Cell;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: ola
- * Date: Feb 1, 2010
- * Time: 4:15:19 PM
- * To change this template use File | Settings | File Templates.
- */
-
-
-public class RankSolver extends Solver {
+@Deprecated
+public class RankSolver extends AbstractSolver {
 
 	protected int blockIterate(Sudoku sudoku, int i, int j) {
 		Cell currentCell=sudoku.board[i][j];
-		ArrayList<Integer> blockCandidates = SudokuUtil.getBlockCandidates(sudoku, i, j);
+		List<Integer> blockCandidates = SudokuUtil.getBlockCandidates(sudoku, i, j);
 
 		for (int k=0;k<currentCell.candidates.size();k++) {
 			Integer c=currentCell.candidates.get(k);
@@ -33,7 +26,7 @@ public class RankSolver extends Solver {
 
 	protected int rowIterate(Sudoku sudoku, int i, int j) {
 		Cell currentCell=sudoku.board[i][j];
-		ArrayList<Integer> rowCandidates = SudokuUtil.getRowCandidates(sudoku, i, j);
+		List<Integer> rowCandidates = SudokuUtil.getRowCandidates(sudoku, i, j);
 
 		for (int k=0;k<currentCell.candidates.size();k++) {
 			Integer c=currentCell.candidates.get(k);
@@ -47,7 +40,7 @@ public class RankSolver extends Solver {
 
 	protected int colIterate(Sudoku sudoku, int i, int j) {
 		Cell currentCell=sudoku.board[i][j];
-		ArrayList<Integer> colCandidates = SudokuUtil.getColCandidates(sudoku, i, j);
+		List<Integer> colCandidates = SudokuUtil.getColCandidates(sudoku, i, j);
 
 		for (int k=0;k<currentCell.candidates.size();k++) {
 			Integer c=currentCell.candidates.get(k);
