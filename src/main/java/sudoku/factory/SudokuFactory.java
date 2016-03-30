@@ -41,7 +41,8 @@ public class SudokuFactory {
 			return shortHand;
 		}
 	}
-	
+
+	// TODO this needs refactoring with a backhoe.
 	public Sudoku createSudoku() throws SudokuCreationException {
 		int backStep = 1;
 		int lastFailedLevel = -1;
@@ -53,7 +54,7 @@ public class SudokuFactory {
 				// get taken numbers from previous levels
 					for (Integer k: levels[j].takenSquares) {
 						if (!levels[i].setValue(k, State.ILLEGAL)) {
-							// should not happen (famous last words)
+							// Should Not Happen (famous last words)
 							throw new LevelException();
 						}
 					}
@@ -69,6 +70,10 @@ public class SudokuFactory {
 				// if this fails, step back backStep++ number of times and try again.
 				if (lastFailedLevel == i) {
 					backStep++;
+
+					if (i + backStep > 9) {
+						throw new SudokuCreationException("Failed to create a Sudoku, exiting to avoid array out of bounds");
+					}
 				} else {
 					backStep = 1;
 					lastFailedLevel = i;

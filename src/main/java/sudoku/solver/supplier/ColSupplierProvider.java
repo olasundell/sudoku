@@ -1,28 +1,27 @@
 package sudoku.solver.supplier;
 
+import sudoku.model.Cell;
 import sudoku.model.Sudoku;
 import sudoku.solver.SolverChain;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * TODO write documentation
  */
-public class ColSupplierProvider extends AbstractCandidateSupplierProvider {
-	public ColSupplierProvider() {
-		SolverChain.getSingleton().registerSupplierProvider(this);
+class ColSupplierProvider extends AbstractCandidateSupplierProvider {
+	static {
+		SolverChain.getSingleton().registerSupplierProvider(new ColSupplierProvider());
 	}
 
 	@Override
 	protected Set<Integer> createCandidates(Sudoku sudoku, int i, int j) {
-		Set<Integer> colCandidates= new HashSet<>();
+		Set<Integer> colCandidates= new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		for (int k=0;k<9;k++) {
-			if (k!= i) { // check col
-				colCandidates.addAll(sudoku.board[k][j].candidates);
+			Cell cell = sudoku.board[k][j];
+			if (!cell.isUndecided()) {
+				colCandidates.remove(cell.getValue());
 			}
 		}
 

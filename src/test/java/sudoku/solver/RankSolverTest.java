@@ -15,7 +15,7 @@ public class RankSolverTest {
 
 	@BeforeClass
 	public void setupPredictableButRandomBoard() throws SudokuCreationException {
-		SudokuFactory instance = SudokuFactory.getInstance();
+		SudokuFactory instance = new SudokuFactory(0);
 
 		one = instance.createSudoku();
 	}
