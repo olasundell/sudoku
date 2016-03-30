@@ -1,9 +1,11 @@
 package sudoku.solver.supplier;
 
+import sudoku.model.Candidates;
 import sudoku.model.Cell;
 import sudoku.model.Sudoku;
 import sudoku.solver.SolverChain;
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -15,7 +17,8 @@ class BlockSupplierProvider extends AbstractCandidateSupplierProvider {
 	}
 
 	@Override
-	protected Set<Integer> createCandidates(Sudoku sudoku, int i, int j) {
+	protected Candidates createCandidates(Sudoku sudoku, int i, int j) {
+		Candidates.CandidatesBuilder builder = Candidates.builder();
 		Set<Integer> blockCandidates = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
 		for (int  k = 0 ; k < 9 ; k++) {
@@ -27,9 +30,11 @@ class BlockSupplierProvider extends AbstractCandidateSupplierProvider {
 			Cell cell = sudoku.board[y][x];
 			if (!cell.isUndecided()) {
 				blockCandidates.remove(cell.getValue());
+			} else {
+				builder.cell(new Point(y, x));
 			}
 		}
 
-		return blockCandidates;
+		return builder.candidates(blockCandidates).build();
 	}
 }

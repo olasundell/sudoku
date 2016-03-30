@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import sudoku.factory.SudokuCreationException;
+import sudoku.model.Candidates;
 import sudoku.model.Sudoku;
 import sudoku.util.SudokuUtil;
 
@@ -24,11 +25,11 @@ public class RowSupplierProviderTest {
 
 	@Test
 	public void shouldProvideRowCandidates() {
-		Set<Integer> result = new RowSupplierProvider().createCandidates(sudoku, 0, 0);
+		Candidates result = new RowSupplierProvider().createCandidates(sudoku, 0, 0);
 		Assert.assertNotNull(result);
-		Assert.assertNotEquals(0, result.size(), "Row supplier should provide non-empty result");
+		Assert.assertNotEquals(0, result.getCandidates().size(), "Row supplier should provide non-empty result");
 		Set<Integer> expected = new HashSet<>(Arrays.asList(2, 3, 6, 7, 8, 9));
 
-		Assert.assertEquals(result, expected, "Row candidates aren't what was expected");
+		Assert.assertEquals(result.getCandidates(), expected, "Row candidates aren't what was expected");
 	}
 }

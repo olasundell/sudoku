@@ -1,5 +1,6 @@
 package sudoku.solver;
 
+import sudoku.model.Candidates;
 import sudoku.model.CellSolution;
 import sudoku.model.Sudoku;
 import sudoku.solver.supplier.CandidateSupplierProvider;
@@ -18,7 +19,7 @@ public class SolverChain {
 			for (int j = 0; j < 9; j++) {
 				CellSolution solution;
 				for (CandidateSupplierProvider s: chain) {
-					Supplier<Set<Integer>> supplier = s.getCandidateSupplier(sudoku, i, j);
+					Supplier<Candidates> supplier = s.getCandidateSupplier(sudoku, i, j);
 					supplier.get();
 
 //					try {
