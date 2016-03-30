@@ -2,6 +2,7 @@ package sudoku.solver.supplier;
 
 import sudoku.model.Candidates;
 import sudoku.model.Cell;
+import sudoku.model.Coordinate;
 import sudoku.model.Sudoku;
 import sudoku.solver.SolverChain;
 
@@ -31,7 +32,7 @@ class BlockSupplierProvider extends AbstractCandidateSupplierProvider {
 			if (!cell.isUndecided()) {
 				blockCandidates.remove(cell.getValue());
 			} else {
-				builder.cell(new Point(y, x));
+				builder.cell(Coordinate.builder().x(x).y(y).build());
 			}
 		}
 

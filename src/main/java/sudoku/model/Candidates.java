@@ -15,5 +15,5 @@ import java.util.Set;
 public class Candidates {
 	private final Set<Integer> candidates;
 	@Singular
-	private final Set<Point> cells;
+	private final Set<Coordinate> cells;
 }
